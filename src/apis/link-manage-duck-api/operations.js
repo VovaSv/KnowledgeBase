@@ -17,6 +17,10 @@ const addLinkOperation = addLinkData => {
     const history = addLinkData.history;
     const addLinkFormData = getState().form.addLinkForm.values;
     const userId = getState().firebase.auth.uid;
+    const userFirstName = getState().firebase.profile.firstName || "";
+    const userInitials = getState().firebase.profile.initials || "NA";
+    const userLastName = getState().firebase.profile.lastName || "";
+    const userNickName = getState().firebase.profile.nickName || "";
     console.log("addLinkFormData ", addLinkFormData);
     delete addLinkData.history;
     firestore
@@ -25,7 +29,11 @@ const addLinkOperation = addLinkData => {
         ...addLinkData,
         ...addLinkFormData,
         createdDate,
-        userId
+        userId,
+        userFirstName,
+        userInitials,
+        userLastName,
+        userNickName
       })
       .then(addLinkResponse => {
         dispatch(addLinkSuccess(addLinkResponse));

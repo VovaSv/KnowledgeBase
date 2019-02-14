@@ -5,6 +5,7 @@ import { Visibility, Modal } from "semantic-ui-react";
 import NavBarMenu from "../../components/navbar/NavBarMenu";
 import NavBarLoginSignUpButtons from "./NavBarLoginSignUpButtons";
 import NavBarAddWishSignOutButtons from "./NavBarAddLinkSignOutButtons.js";
+import styles from "../../style/style.css.js";
 
 import LoginFormContainer from "../login/LoginFormContainer";
 
@@ -13,7 +14,16 @@ export default class StickyNavBar extends Component {
     menuFixed: false,
     overlayFixed: false,
     showLoginModal: false,
-    activeItem: "app"
+    activeItem: "app",
+    menuStyle: styles.fixedMenuStyleWithoutShadow
+  };
+
+  setShadowMenu = () => {
+    this.setState({ menuStyle: styles.fixedMenuStyleWithShadow });
+  };
+
+  unSetShadowMenu = () => {
+    this.setState({ menuStyle: styles.fixedMenuStyleWithoutShadow });
   };
 
   handleOverlayRef = c => {
@@ -58,7 +68,8 @@ export default class StickyNavBar extends Component {
       showLoginModal,
       closeOnDimmerClick = false,
       activeItem,
-      menuFixed
+      menuFixed,
+      menuStyle
     } = this.state;
     const { auth } = this.props;
     console.log("activeItem : ", activeItem);
@@ -87,6 +98,9 @@ export default class StickyNavBar extends Component {
           menuFixed={menuFixed}
           handleItemClick={this.handleItemClick}
           activeItem={activeItem}
+          menuStyle={menuStyle}
+          setShadowMenu={this.setShadowMenu}
+          unSetShadowMenu={this.unSetShadowMenu}
         >
           {auth.uid ? (
             <NavBarAddWishSignOutButtons

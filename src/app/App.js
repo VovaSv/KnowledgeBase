@@ -7,6 +7,7 @@ import MainPageContainer from "./main-page/MainPageContainer";
 import AddLinkMainContainer from "./add-link-page/AddLinkMainContainer";
 import SignUpMainContainer from "./signup-page/SignUpMainContainer";
 import AboutMainComponent from "./about-page/AboutMainComponent";
+import LinkDetailsMainContainer from "./link-details-page/LinkDetailsMainContainer";
 //import LinkDetailsMainContainer from "./wish-details-page/WishDetailsMainContainer";
 
 class App extends Component {
@@ -22,6 +23,11 @@ class App extends Component {
               <Route exact path="/add-link" component={AddLinkMainContainer} />
               <Route exact path="/signup" component={SignUpMainContainer} />
               <Route exact path="/about" component={AboutMainComponent} />
+              <Route
+                exact
+                path="/link/:id"
+                component={LinkDetailsMainContainer}
+              />
               {/*<Route path="/link/:id" component={LinkDetailsMainContainer} /> */}
               <Redirect to="/app" />
             </Switch>
