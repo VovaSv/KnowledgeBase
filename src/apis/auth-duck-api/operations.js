@@ -1,6 +1,5 @@
 // operations.js
 import { Creators } from "./actions";
-import { Redirect } from "react-router-dom";
 const loginRequest = Creators.loginRequest;
 const loginSuccess = Creators.loginSuccess;
 const loginFailure = Creators.loginFailure;
