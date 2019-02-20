@@ -37,7 +37,6 @@ const loginOperation = loginData => {
       .then(() => {
         dispatch(loginSuccess());
         console.log("loginSuccess - : ", loginData);
-        <Redirect to="/" />;
       })
       .catch(err => {
         dispatch(loginFailure(err));
